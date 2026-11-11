@@ -86,9 +86,13 @@
     innerCircle.png          <- Sunset Vanity Bedside Portrait(1).png
     social-cover.png         <- generated social card from selected hero
 
-    WEB3FORMS
+    FORMSPARK
     ---------
-    Replace YOUR_WEB3FORMS_ACCESS_KEY in both forms to activate submission.
+    Studio applications: https://submit-form.com/zokU5xYaD
+    Inner Circle signup: https://submit-form.com/K1reOKDqL
+    Formspark notifications go to the recipients configured in its dashboard.
+    Separate subject lines are provided through hidden _email fields.
+    Form submissions use inline AJAX feedback and keep visitors on this page.
   -->
 </head>
 
@@ -371,17 +375,17 @@
               <figure class="member-feature-image">
                 <img src="assets/img/innerCircle.png" alt="Warm sunset studio portrait with performers preparing on a bedroom set" width="1774" height="887" loading="lazy">
               </figure>
-              <form action="https://api.web3forms.com/submit" method="POST" class="studio-members-form" aria-label="Members access updates">
-                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
-                <input type="hidden" name="subject" value="South Daddy | Members Access Interest">
-                <input type="hidden" name="from_name" value="South Daddy Website">
+              <form action="https://submit-form.com/K1reOKDqL" method="POST" class="studio-members-form" aria-label="Members access updates" data-formspark-form>
+                <input type="hidden" name="_email.subject" value="[SDP] Inner Circle Signup">
+                <input type="hidden" name="_email.from" value="South Daddy Productions">
                 <input type="hidden" name="message" value="Please notify me when the South Daddy Inner Circle and potential all-channel access becomes available.">
-                <input type="checkbox" name="botcheck" class="d-none" tabindex="-1" aria-hidden="true">
+                <input type="checkbox" name="_honeypot" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
                 <label class="form-label" for="member-email">Interested?</label>
                 <div class="member-email-row d-flex flex-wrap gap-2">
                   <input id="member-email" type="email" name="email" class="form-control" placeholder="Your email" autocomplete="email" required>
                   <button type="submit" class="btn-pill">Get on the List</button>
                 </div>
+                <p class="mt-3 small" data-form-feedback role="status" aria-live="polite" hidden></p>
               </form>
             </div>
           </div>
@@ -393,11 +397,10 @@
               <h3>Work with us</h3>
               <p>On-camera opportunities, creator collaborations, crew, distribution, and business conversations. Tell us what you have in mind.</p>
 
-              <form action="https://api.web3forms.com/submit" method="POST" class="php-email-form studio-web3-form" aria-label="Studio inquiry and application">
-                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
-                <input type="hidden" name="subject" value="South Daddy | Studio Application">
-                <input type="hidden" name="from_name" value="South Daddy Website">
-                <input type="checkbox" name="botcheck" class="d-none" tabindex="-1" aria-hidden="true">
+              <form action="https://submit-form.com/zokU5xYaD" method="POST" class="php-email-form studio-web3-form" aria-label="Studio inquiry and application" data-formspark-form>
+                <input type="hidden" name="_email.subject" value="[SDP] Studio Application">
+                <input type="hidden" name="_email.from" value="South Daddy Productions">
+                <input type="checkbox" name="_honeypot" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
 
                 <div class="row gy-3">
                   <div class="col-md-6">
@@ -439,6 +442,7 @@
                   </div>
                   <div class="col-12">
                     <button type="submit" class="btn-pill">Send</button>
+                    <p class="mt-3 small" data-form-feedback role="status" aria-live="polite" hidden></p>
                   </div>
                 </div>
               </form>
@@ -501,6 +505,86 @@
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
+  <!-- Formspark: inline feedback without changing Horizon's existing main.js. -->
+  <script>
+    (() => {
+      'use strict';
+
+      document.querySelectorAll('[data-formspark-form]').forEach((form) => {
+        const button = form.querySelector('button[type="submit"]');
+        const feedback = form.querySelector('[data-form-feedback]');
+        const originalLabel = button.textContent;
+        const isMembersForm = form.classList.contains('studio-members-form');
+        let submitting = false;
+        let submitted = false;
+
+        function showFeedback(message, successful) {
+          feedback.textContent = message;
+          feedback.style.color = successful
+            ? (isMembersForm ? '#f3d78b' : '#35613d')
+            : (isMembersForm ? '#ffaca8' : '#a33030');
+          feedback.hidden = false;
+        }
+
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          if (submitting || submitted) return;
+          if (!form.reportValidity()) return;
+
+          submitting = true;
+          button.disabled = true;
+          button.setAttribute('aria-busy', 'true');
+          button.textContent = 'Sending...';
+          feedback.hidden = true;
+
+          // Formspark expects nested _email data when posting JSON.
+          const payload = {};
+          const emailOptions = {};
+          for (const [name, value] of new FormData(form).entries()) {
+            if (name === '_email.subject') emailOptions.subject = value;
+            else if (name === '_email.from') emailOptions.from = value;
+            else payload[name] = value;
+          }
+          payload._email = emailOptions;
+
+          try {
+            const response = await fetch(form.action, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              },
+              body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+              if (response.status === 402) {
+                throw new Error('Submissions are temporarily unavailable. Please try again later.');
+              }
+              if (response.status === 403) {
+                throw new Error('We could not accept this submission. Please review your details or try again.');
+              }
+              throw new Error('We could not confirm your submission. Please try again.');
+            }
+
+            submitted = true;
+            form.reset();
+            showFeedback(isMembersForm
+              ? "You're on the list. We'll be in touch when there's news."
+              : "Thanks, we've received your message.", true);
+            button.textContent = 'Sent';
+          } catch (error) {
+            showFeedback(error.message || 'We could not confirm your submission. Please try again.', false);
+            button.disabled = false;
+            button.textContent = originalLabel;
+          } finally {
+            submitting = false;
+            button.removeAttribute('aria-busy');
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 
 </html>
