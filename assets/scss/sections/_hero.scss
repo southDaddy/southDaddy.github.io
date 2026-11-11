@@ -1,0 +1,196 @@
+// main: ../main.scss
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+.hero {
+  padding-top: 60px;
+  padding-bottom: 80px;
+
+  @media (max-width: 768px) {
+    padding: 64px 0 48px;
+  }
+
+  .hero-content {
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 14px;
+      font-weight: 500;
+      color: color-mix(in srgb, var(--default-color), transparent 30%);
+      margin-bottom: 24px;
+
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 48px;
+        height: 1px;
+        background-color: var(--accent-color);
+      }
+    }
+
+    h1 {
+      font-size: 56px;
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+
+      @media (max-width: 1200px) {
+        font-size: 48px;
+      }
+
+      @media (max-width: 576px) {
+        font-size: 38px;
+        letter-spacing: -1px;
+      }
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 480px;
+      color: color-mix(in srgb, var(--default-color), transparent 25%);
+      margin-bottom: 40px;
+    }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-bottom: 48px;
+
+      .btn-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 32px;
+        border-radius: 50px;
+        background-color: var(--accent-color);
+        color: var(--contrast-color);
+        font-family: var(--heading-font);
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.3s ease-out;
+
+        &:hover {
+          transform: translateY(-4px);
+          background-color: color-mix(in srgb, var(--accent-color) 90%, black);
+          color: var(--contrast-color);
+        }
+      }
+
+      .link-arrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--heading-font);
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--heading-color);
+        background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+        transition: background-size 0.3s ease-out;
+
+        i {
+          color: var(--accent-color);
+          transition: transform 0.3s ease-out;
+        }
+
+        &:hover {
+          background-size: 100% 1px;
+          color: var(--heading-color);
+
+          i {
+            transform: translateX(4px);
+          }
+        }
+      }
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 48px;
+      padding-top: 32px;
+      border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+
+      @media (max-width: 576px) {
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .meta-item {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .value {
+          font-family: var(--heading-font);
+          font-size: 24px;
+          font-weight: 600;
+          line-height: 1;
+          color: var(--heading-color);
+        }
+
+        .label {
+          font-size: 14px;
+          color: color-mix(in srgb, var(--default-color), transparent 40%);
+        }
+      }
+    }
+  }
+
+  .hero-visual {
+    position: relative;
+
+    img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    .floating-card {
+      position: absolute;
+      left: 24px;
+      bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 24px;
+      background-color: var(--surface-color);
+      border: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.08);
+
+      i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+        color: var(--accent-color);
+        font-size: 20px;
+      }
+
+      .card-text {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        .value {
+          font-family: var(--heading-font);
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 1;
+          color: var(--heading-color);
+        }
+
+        .label {
+          font-size: 14px;
+          color: color-mix(in srgb, var(--default-color), transparent 40%);
+        }
+      }
+    }
+  }
+}

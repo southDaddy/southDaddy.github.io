@@ -1,0 +1,129 @@
+// main: ../main.scss
+/*--------------------------------------------------------------
+# Pricing Section
+--------------------------------------------------------------*/
+.pricing {
+  .pricing-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 40px 32px;
+    background-color: var(--surface-color);
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.06);
+    }
+
+    &.featured {
+      border: 2px solid var(--accent-color);
+    }
+
+    .badge-popular {
+      position: absolute;
+      top: -14px;
+      left: 32px;
+      padding: 4px 16px;
+      border-radius: 50px;
+      background-color: var(--accent-color);
+      color: var(--contrast-color);
+      font-family: var(--heading-font);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .plan {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .blurb {
+      font-size: 14px;
+      line-height: 1.6;
+      color: color-mix(in srgb, var(--default-color), transparent 30%);
+      margin-bottom: 24px;
+    }
+
+    .price {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+
+      .amount {
+        font-family: var(--heading-font);
+        font-size: 40px;
+        font-weight: 700;
+        letter-spacing: -1px;
+        color: var(--heading-color);
+      }
+
+      .period {
+        font-size: 14px;
+        color: color-mix(in srgb, var(--default-color), transparent 40%);
+      }
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      li {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 16px;
+
+        i {
+          color: var(--accent-color);
+          font-size: 20px;
+          line-height: 1.2;
+        }
+      }
+    }
+
+    .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: auto;
+      padding: 14px 32px;
+      border-radius: 50px;
+      background-color: var(--accent-color);
+      color: var(--contrast-color);
+      font-family: var(--heading-font);
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s ease-out;
+
+      &:hover {
+        transform: translateY(-4px);
+        background-color: color-mix(in srgb, var(--accent-color) 90%, black);
+        color: var(--contrast-color);
+      }
+
+      &.outline {
+        background-color: transparent;
+        border: 1px solid color-mix(in srgb, var(--default-color), transparent 60%);
+        color: var(--heading-color);
+
+        &:hover {
+          border-color: var(--accent-color);
+          color: var(--accent-color);
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}

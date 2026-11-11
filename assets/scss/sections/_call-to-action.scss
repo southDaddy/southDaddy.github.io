@@ -1,0 +1,63 @@
+// main: ../main.scss
+/*--------------------------------------------------------------
+# Call To Action Section
+--------------------------------------------------------------*/
+.call-to-action {
+  padding: 96px 0;
+
+  @media (max-width: 768px) {
+    padding: 64px 0;
+  }
+
+  .cta-wrap {
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--accent-color);
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: 42px;
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 24px;
+
+      @media (max-width: 768px) {
+        font-size: 32px;
+      }
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 520px;
+      margin: 0 auto 40px auto;
+      color: color-mix(in srgb, var(--default-color), transparent 20%);
+    }
+
+    .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      border-radius: 50px;
+      background-color: var(--accent-color);
+      color: var(--contrast-color);
+      font-family: var(--heading-font);
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s ease-out;
+
+      &:hover {
+        transform: translateY(-4px);
+        background-color: color-mix(in srgb, var(--accent-color) 90%, black);
+        color: var(--contrast-color);
+      }
+    }
+  }
+}

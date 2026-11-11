@@ -1,0 +1,75 @@
+// main: ../main.scss
+/*--------------------------------------------------------------
+# Global Page Titles & Breadcrumbs
+--------------------------------------------------------------*/
+.page-title {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  position: relative;
+
+  .heading {
+    padding: 80px 0;
+    border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+    border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+
+    h1 {
+      font-size: 56px;
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+
+      @media (max-width: 768px) {
+        font-size: 38px;
+        letter-spacing: -1px;
+      }
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 560px;
+      color: color-mix(in srgb, var(--default-color), transparent 30%);
+    }
+  }
+
+  .breadcrumbs {
+    margin-bottom: 24px;
+
+    ol {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: var(--heading-font);
+
+      a {
+        color: color-mix(in srgb, var(--default-color), transparent 30%);
+        transition: color 0.3s ease-out;
+
+        &:hover {
+          color: var(--accent-color);
+        }
+      }
+
+      li+li {
+        padding-left: 8px;
+
+        &::before {
+          content: "—";
+          display: inline-block;
+          padding-right: 8px;
+          color: color-mix(in srgb, var(--default-color), transparent 70%);
+        }
+      }
+
+      .current {
+        color: var(--accent-color);
+      }
+    }
+  }
+}

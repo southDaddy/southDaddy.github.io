@@ -1,0 +1,67 @@
+// main: ../main.scss
+/*--------------------------------------------------------------
+# Testimonials Section
+--------------------------------------------------------------*/
+.testimonials {
+  .swiper-wrapper {
+    height: auto !important;
+  }
+
+  .testimonial-item {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 8px 0 16px 0;
+
+    .quote {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: -0.5px;
+      color: var(--heading-color);
+      margin-bottom: 32px;
+
+      @media (max-width: 768px) {
+        font-size: 20px;
+      }
+    }
+
+    .avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 16px;
+    }
+
+    .name {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .role {
+      display: block;
+      font-size: 14px;
+      color: color-mix(in srgb, var(--default-color), transparent 40%);
+    }
+  }
+
+  .swiper-pagination {
+    position: static;
+    margin-top: 24px;
+
+    .swiper-pagination-bullet {
+      width: 8px;
+      height: 8px;
+      background-color: color-mix(in srgb, var(--default-color), transparent 60%);
+      opacity: 1;
+      transition: all 0.3s ease-out;
+    }
+
+    .swiper-pagination-bullet-active {
+      width: 24px;
+      border-radius: 50px;
+      background-color: var(--accent-color);
+    }
+  }
+}

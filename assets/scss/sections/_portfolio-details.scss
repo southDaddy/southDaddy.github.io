@@ -1,0 +1,181 @@
+// main: ../main.scss
+/*--------------------------------------------------------------
+# Portfolio Details Section
+--------------------------------------------------------------*/
+.portfolio-details {
+  .meta-band {
+    padding: 24px 0;
+    border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    margin-bottom: 48px;
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .label {
+        font-size: 14px;
+        color: color-mix(in srgb, var(--default-color), transparent 40%);
+      }
+
+      .value {
+        font-family: var(--heading-font);
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--heading-color);
+      }
+    }
+  }
+
+  .portfolio-details-slider {
+    margin-bottom: 48px;
+
+    .swiper-wrapper {
+      height: auto !important;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    .swiper-pagination {
+      position: static;
+      margin-top: 24px;
+
+      .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        background-color: color-mix(in srgb, var(--default-color), transparent 60%);
+        opacity: 1;
+        transition: all 0.3s ease-out;
+      }
+
+      .swiper-pagination-bullet-active {
+        width: 24px;
+        border-radius: 50px;
+        background-color: var(--accent-color);
+      }
+    }
+  }
+
+  .project-summary {
+    h3 {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      margin-bottom: 24px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: color-mix(in srgb, var(--default-color), transparent 20%);
+      margin-bottom: 24px;
+    }
+
+    h4 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.25px;
+      margin: 32px 0 16px 0;
+    }
+
+    .outcome-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      li {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 16px;
+
+        i {
+          color: var(--accent-color);
+          font-size: 20px;
+          line-height: 1.2;
+        }
+      }
+    }
+  }
+
+  .quote-card {
+    padding: 32px;
+    background-color: color-mix(in srgb, var(--default-color), transparent 96%);
+    border-left: 3px solid var(--accent-color);
+    margin-bottom: 32px;
+
+    i {
+      font-size: 40px;
+      line-height: 1;
+      color: var(--accent-color);
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      font-style: italic;
+      color: var(--heading-color);
+      margin-bottom: 24px;
+    }
+
+    .author {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      strong {
+        font-family: var(--heading-font);
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--heading-color);
+      }
+
+      span {
+        font-size: 14px;
+        color: color-mix(in srgb, var(--default-color), transparent 40%);
+      }
+    }
+  }
+
+  .next-cta {
+    padding: 32px;
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+
+    h5 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.25px;
+      margin-bottom: 16px;
+    }
+
+    .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 50px;
+      background-color: var(--accent-color);
+      color: var(--contrast-color);
+      font-family: var(--heading-font);
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s ease-out;
+
+      &:hover {
+        transform: translateY(-4px);
+        background-color: color-mix(in srgb, var(--accent-color) 90%, black);
+        color: var(--contrast-color);
+      }
+    }
+  }
+}

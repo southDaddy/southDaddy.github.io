@@ -1,0 +1,174 @@
+// main: ../main.scss
+/*--------------------------------------------------------------
+# Service Details Section
+--------------------------------------------------------------*/
+.service-details {
+  .intro-content {
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 14px;
+      font-weight: 500;
+      color: color-mix(in srgb, var(--default-color), transparent 30%);
+      margin-bottom: 16px;
+
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 48px;
+        height: 1px;
+        background-color: var(--accent-color);
+      }
+    }
+
+    h3 {
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+
+      @media (max-width: 768px) {
+        font-size: 28px;
+      }
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: color-mix(in srgb, var(--default-color), transparent 20%);
+      margin-bottom: 24px;
+    }
+
+    .benefit-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      li {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 16px;
+
+        i {
+          color: var(--accent-color);
+          font-size: 20px;
+          line-height: 1.2;
+        }
+      }
+    }
+
+    .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      border-radius: 50px;
+      background-color: var(--accent-color);
+      color: var(--contrast-color);
+      font-family: var(--heading-font);
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s ease-out;
+
+      &:hover {
+        transform: translateY(-4px);
+        background-color: color-mix(in srgb, var(--accent-color) 90%, black);
+        color: var(--contrast-color);
+      }
+    }
+  }
+
+  .intro-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .block-heading {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    margin-bottom: 32px;
+  }
+
+  .process-block {
+    margin-top: 64px;
+    padding-top: 48px;
+    border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+
+    .process-step {
+      height: 100%;
+      padding: 32px;
+      background-color: var(--surface-color);
+      border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+      transition: all 0.3s ease-out;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 24px 48px rgba(0, 0, 0, 0.06);
+      }
+
+      .step-number {
+        display: block;
+        font-family: var(--heading-font);
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -1px;
+        color: color-mix(in srgb, var(--accent-color), transparent 40%);
+        margin-bottom: 24px;
+      }
+
+      h5 {
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: -0.25px;
+        margin-bottom: 8px;
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 1.6;
+        color: color-mix(in srgb, var(--default-color), transparent 25%);
+        margin: 0;
+      }
+    }
+  }
+
+  .other-services {
+    margin-top: 64px;
+    padding-top: 48px;
+    border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 12px 24px;
+        border-radius: 50px;
+        border: 1px solid color-mix(in srgb, var(--default-color), transparent 80%);
+        color: var(--default-color);
+        font-family: var(--heading-font);
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.3s ease-out;
+
+        &:hover {
+          border-color: var(--accent-color);
+          color: var(--accent-color);
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+}
